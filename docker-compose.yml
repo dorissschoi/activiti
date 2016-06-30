@@ -1,0 +1,30 @@
+version: '2'
+services:
+  activiti-mysql:
+    hostname: activiti-mysql
+    container_name: activiti-mysql
+    image: sameersbn/mysql:latest
+    volumes:
+      - /home/doris/activiti-mysql/data:/var/lib/mysql
+    environment:
+      - DB_NAME=activiti_production
+      - DB_USER=activiti
+      - DB_PASS=aaa123aa
+  
+  activiti-server:
+    hostname: activiti-server
+    container_name: activiti-server
+    image: dorissschoi/activiti:latest
+    links:
+      - activiti-mysql:mysql
+    ports:
+      - 8080:8080  
+    # for version 1 link env var
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=activiti-mysql
+      - DB_PORT=3306
+      # support for linked sameersbn/mysql image
+      - DB_USER=activiti
+      - DB_PASS=aaa123aa
+      - DB_NAME=activiti_production          
