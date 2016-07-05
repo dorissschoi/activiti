@@ -11,11 +11,11 @@ MAINTAINER dorisss "dorissschoi@gmail.com"
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 9.0.0.M6 
-ENV ACTIVITI_VERSION 5.20.0
+ENV ACTIVITI_VERSION 5.21.0
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.33
 
 RUN wget http://www.us.apache.org/dist/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/catalina.tar.gz
-RUN wget https://github.com/Activiti/Activiti/releases/download/${ACTIVITI_VERSION}/activiti-${ACTIVITI_VERSION}.zip -O /tmp/activiti.zip
+RUN wget https://github.com/Activiti/Activiti/releases/download/activiti-${ACTIVITI_VERSION}/activiti-${ACTIVITI_VERSION}.zip -O /tmp/activiti.zip
 
 # Unpack
 RUN tar xzf /tmp/catalina.tar.gz -C /opt
