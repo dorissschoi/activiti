@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="task" name="task" isExecutable="true">
+    <startEvent id="sid-872974A6-7526-4E7D-9879-74CA81FBA372"></startEvent>
+    <sequenceFlow id="sid-CCA87BB6-867F-4960-B70F-0E65F48B82FE" sourceRef="sid-872974A6-7526-4E7D-9879-74CA81FBA372" targetRef="scripttask"></sequenceFlow>
+    <scriptTask id="scripttask" name="scripttask" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <extensionElements>
+        <activiti:executionListener event="start" expression="println &quot;started&quot;"></activiti:executionListener>
+      </extensionElements>
+      <script><![CDATA[execution.setVariable("total_step", "1");
+println "Total step:" + execution.getVariable("total_step");
+execution.setVariable("url", "https://mob.myvnc.com");
+println "Step1:" + execution.getVariable("url");]]></script>
+    </scriptTask>
+    <userTask id="sid-C17ACAD2-ED0C-4DCE-91F4-FAA46527C87C" activiti:assignee="kermit">
+      <extensionElements>
+        <activiti:formProperty id="step1_url" name="step1_url" type="string" expression="${execution.getVariable(&quot;url&quot;)}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="total_step" name="total_step" type="string" expression="${execution.getVariable(&quot;total_step&quot;)}" writable="false"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-6442AFC3-62EF-49DB-84AB-C13598DFE39F" sourceRef="scripttask" targetRef="sid-C17ACAD2-ED0C-4DCE-91F4-FAA46527C87C"></sequenceFlow>
+    <endEvent id="sid-568A6418-4ADC-463C-9DE9-740920510A3A"></endEvent>
+    <sequenceFlow id="sid-9A4BDCEA-ADE1-44CF-B62C-C863F3EDE27F" sourceRef="sid-C17ACAD2-ED0C-4DCE-91F4-FAA46527C87C" targetRef="sid-568A6418-4ADC-463C-9DE9-740920510A3A"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_task">
+    <bpmndi:BPMNPlane bpmnElement="task" id="BPMNPlane_task">
+      <bpmndi:BPMNShape bpmnElement="sid-872974A6-7526-4E7D-9879-74CA81FBA372" id="BPMNShape_sid-872974A6-7526-4E7D-9879-74CA81FBA372">
+        <omgdc:Bounds height="30.0" width="30.0" x="107.0" y="85.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask" id="BPMNShape_scripttask">
+        <omgdc:Bounds height="80.0" width="100.0" x="210.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C17ACAD2-ED0C-4DCE-91F4-FAA46527C87C" id="BPMNShape_sid-C17ACAD2-ED0C-4DCE-91F4-FAA46527C87C">
+        <omgdc:Bounds height="80.0" width="100.0" x="355.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-568A6418-4ADC-463C-9DE9-740920510A3A" id="BPMNShape_sid-568A6418-4ADC-463C-9DE9-740920510A3A">
+        <omgdc:Bounds height="28.0" width="28.0" x="500.0" y="86.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-CCA87BB6-867F-4960-B70F-0E65F48B82FE" id="BPMNEdge_sid-CCA87BB6-867F-4960-B70F-0E65F48B82FE">
+        <omgdi:waypoint x="137.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="210.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-6442AFC3-62EF-49DB-84AB-C13598DFE39F" id="BPMNEdge_sid-6442AFC3-62EF-49DB-84AB-C13598DFE39F">
+        <omgdi:waypoint x="310.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="355.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-9A4BDCEA-ADE1-44CF-B62C-C863F3EDE27F" id="BPMNEdge_sid-9A4BDCEA-ADE1-44CF-B62C-C863F3EDE27F">
+        <omgdi:waypoint x="455.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
