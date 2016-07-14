@@ -8,9 +8,9 @@ services:
       - ${COMPOSEROOT}/todo/mysqldata:/var/lib/mysql
       - /etc/localtime:/etc/localtime
     environment:
-      - DB_NAME=
-      - DB_USER=
-      - DB_PASS=
+      - DB_NAME=activiti_production
+      - DB_USER=activiti
+      - DB_PASS=pass1234
   
   activiti_server:
     hostname: activiti_server
@@ -28,6 +28,6 @@ services:
       - DB_HOST=activiti_mysql
       - DB_PORT=3306
       # support for linked sameersbn/mysql image
-      - DB_USER=
-      - DB_PASS=
-      - DB_NAME=          
+      - DB_NAME=activiti_production
+      - DB_USER=activiti
+      - DB_PASS=pass1234               
