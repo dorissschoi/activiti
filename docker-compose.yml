@@ -21,7 +21,6 @@ services:
     image: dorissschoi/activiti:latest
     volumes:
       - /etc/localtime:/etc/localtime
-      - ./assets/config/tomcat/web.xml:/opt/tomcat/conf/web.xml
     links:
       - activiti_mysql:mysql
     ports:
