@@ -11,7 +11,7 @@ MAINTAINER dorisss "dorissschoi@gmail.com"
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 9.0.0.M9 
-ENV ACTIVITI_VERSION 5.21.0
+ENV ACTIVITI_VERSION 5.22.0
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.33
 
 RUN wget http://www.us.apache.org/dist/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/catalina.tar.gz
